@@ -2,7 +2,7 @@
 
 let
   cfg = config.localConfiguration;
-  nide = builtins.fetchTarball "https://github.com/jluttine/NiDE/archive/master.tar.gz";
+  nide = builtins.fetchTarball "https://github.com/jluttine/NiDE/archive/0.2.5.tar.gz";
 in
 {
 
