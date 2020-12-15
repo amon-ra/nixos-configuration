@@ -40,10 +40,18 @@
       type = types.bool;
       default = false;
     };
+    autoupgrade = mkOption {
+      type = types.bool;
+      default = false;
+    };    
     extraPackages = mkOption {
       type = types.listOf types.package;
       default = [];
     };
+    extraKernelModules = mkOption {
+      type = types.listOf types.str;
+      default = [];
+    };    
     nixpkgs = mkOption {
       type = types.nullOr types.str;
       default = null;
@@ -52,9 +60,75 @@
       type = types.enum [ "bios" "uefi" ];
       default = "bios";
     };
+    timezone = mkOption {
+      type = types.nullOr types.str;
+      default = "Europe/Helsinki";      
+    };
   };
 
   config = let
+
+    extensions = (with pkgs.vscode-extensions; [
+        bbenoist.Nix
+        visualstudioexptteam.vscodeintellicode
+        ms-python.python
+        ms-python.vscode-pylance
+        donjayamanne.python-extension-pack
+        kevinrose.vsc-python-indent
+        magicstack.magicpython
+        njpwerner.autodocstring
+        ms-azuretools.vscode-docker
+        ms-vscode-remote.remote-ssh
+        ritwickdey.liveserver
+        ms-vsliveshare.vsliveshare
+        ms-vsliveshare.vsliveshare-audio
+        bycedric.vscode-expo
+        vscoss.vscode-ansible
+        hookyqr.beautify
+        giladgray.theme-blueprint
+        alefragnani.bookmarks
+        deerawan.vscode-dash
+        msjsdiag.debugger-for-chrome
+        batisteo.vscode-django
+        editorconfig.editorconfig
+        dbaeumer.vscode-eslint
+        eamodio.gitlens
+        dchanco.vsc-invoke
+        xabikos.javascriptsnippets
+        wholroyd.jinja
+        kiteco.kite
+        emilast.logfilehighlighter
+        jeffery9.odoo-snippets
+        jigar-patel.odoosnippets
+        sandcastle.vscode-open
+        fabiospampinato.vscode-open-multiple-files
+        ryu1kn.partial-diff
+        felixfbecker.php-pack
+        mechatroner.rainbow-csv
+        eamodio.restore-editors
+        emeraldwalk.runonsave
+        wayou.vscode-todo-highlight
+        gruntfuggly.todo-tree
+        octref.vetur
+        uctakeoff.vscode-counter
+        yahya-gilany.vscode-pomodoro
+        wakatime.vscode-wakatime
+        johnbillion.vscode-wordpress-hooks
+        wordpresstoolbox.wordpress-toolbox
+        redhat.vscode-xml
+        github.vscode-pull-request-github
+        dbaeumer.jshint
+        bajdzis.vscode-database
+    ]);
+      # ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+      #   name = "remote-ssh-edit";
+      #   publisher = "ms-vscode-remote";
+      #   version = "0.47.2";
+      #   sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
+      # }];
+    vscode-with-extensions = pkgs.vscode-with-extensions.override {
+        vscodeExtensions = extensions;
+      };
 
     localConfiguration = (import ./local-configuration.nix) {
       inherit pkgs;
@@ -84,7 +158,7 @@
       # Use the GRUB 2 boot loader.
       boot = {
 
-        kernelModules = [ "nf_conntrack_pptp" ];
+        kernelModules = [ "nf_conntrack_pptp" ]  ++ cfg.extraKernelModules;
 
         # BIOS systems
         loader.grub = lib.mkIf (cfg.bootMode == "bios") {
@@ -108,10 +182,10 @@
       # boot.initrd.luks.devices = cfg.luksDevices;
 
       # Set your time zone.
-      time.timeZone = "Europe/Helsinki";
+      time.timeZone = cfg.timezone;
 
       # Manual upgrades
-      system.autoUpgrade.enable = false;
+      system.autoUpgrade.enable = cfg.autoupgrade;
 
       # NOTE: This is something you should probably never change. It's not
       # really related to NixOS version. It just prevents some backwards
@@ -120,7 +194,7 @@
       # modified, this version number is used to check whether you are using the
       # old or new default, so your system won't break if, for instance, a
       # database changes its default data directory.
-      system.stateVersion = "18.03";
+      system.stateVersion = cfg.version;
 
       # Immutable users and groups
       users.mutableUsers = false;
@@ -263,7 +337,7 @@
         binutils
         lsof
         usbutils
-
+        
         # Gamin: a file and directory monitoring system
         fam
 
@@ -275,7 +349,7 @@
         mupdf
 
         # Text editors
-        vim
+        neovim
         xclip  # system clipboard support for vim
 
         # VPN
@@ -328,8 +402,14 @@
 
         python3Packages.magic-wormhole
 
+        skype
+
+        vscode-with-extensions
+
       ] ++ cfg.extraPackages;
 
+      programs.docker.enable = true;        
+      
     }
 
   ;
