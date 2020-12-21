@@ -312,6 +312,21 @@
         };
       };
 
+      environment.variables.EDITOR = "nvim";
+      nixpkgs.overlays = [
+        (self: super: {
+          neovim = super.neovim.override {
+            viAlias = true;
+            vimAlias = true;
+          };
+        })
+      ];      
+
+      programs.zsh ={
+        enable = true;
+      };
+      users.defaultUserShell = pkgs.zsh;
+      
       # Fundamental core packages
       environment.systemPackages = with pkgs; [
 
