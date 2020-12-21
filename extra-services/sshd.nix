@@ -14,10 +14,12 @@ with lib;
     services.openssh = {
       enable = true;
       permitRootLogin = "no";
-      ports = [6662];
+      ports = [10022];
       passwordAuthentication = false;
     };
-
+    networking.firewall.enable = true;
+    networking.firewall.allowPing = true;
+    networking.firewall.allowedTCPPorts = [ 10022 ];
     programs.mosh = {
       enable = true;
     };
