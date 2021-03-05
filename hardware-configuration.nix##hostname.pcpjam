@@ -1,0 +1,49 @@
+{ config, lib, pkgs, ... }:
+
+{
+  imports =
+    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
+    ];
+
+  #boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.kernelModules = [ "dm-cache" ];
+  boot.kernelModules = [ "amdgpu" ];
+  boot.extraModulePackages = [ ];
+  # https://bugzilla.kernel.org/show_bug.cgi?id=110941
+  #boot.kernelParams = [ "intel_pstate=no_hwp" ];
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.loader.grub.copyKernels = true;
+  #boot.zfs.forceImportAll = false;
+  services.zfs.autoScrub.enable = true;
+  services.zfs.trim.enable = true;
+
+  fileSystems."/" =
+    { device = "rpool/root/nixos";
+      fsType = "zfs";
+    };
+
+  #boot.initrd.luks.devices."luks-nixos-root".device = "/dev/disk/by-uuid/a7561bd1-f3ef-4f4d-ab3b-69121e64689f";
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-label/boot";
+      fsType = "vfat";
+    };
+
+  fileSystems."/home" =
+    { 
+      # device = "/dev/disk/by-uuid/93d938e8-0d95-4d30-94dc-6533b7610236";
+      device = "rpool/home";
+      fsType = "zfs";
+    };
+
+  # boot.initrd.luks.devices."luks-nixos-var".device = "/dev/disk/by-uuid/54c4bc98-ac8c-43e1-9c98-1889ff858dfc";
+  # luks-nixos-var contains an LVM so it needs to be opened after LVM has been
+  # activated
+  # boot.initrd.luks.devices."luks-nixos-var".preLVM = false;
+
+  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
+
+  nix.maxJobs = lib.mkDefault 8;
+  #powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware.opengl.driSupport = true;
+}

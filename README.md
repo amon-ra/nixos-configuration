@@ -255,7 +255,7 @@ Different parts of the system are backed up differently. Here's an overview how
 I've set it up:
 
 - System configuration -> NixOS configuration files in GitHub
-- Dotfiles in home directory -> GitHub
+- Dotfiles in f directory -> GitHub
 - Important files under home directory -> home server by using syncthing
 - Home server stateful `/var` directory -> remote encrypted disk snapshot
 
@@ -397,3 +397,7 @@ on the stick. You can configure that content as follows:
   ```
   chmod -R ug+rwX .
   ```
+
+
+# TODO:
+- https://git.deck.sh/shark/vfio-config/-/blob/master/vm.xml

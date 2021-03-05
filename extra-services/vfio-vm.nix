@@ -215,7 +215,24 @@ with lib;
     };
   };
 }
+## USING:
+  # extraServices.vfio-vm = {
+  #   enable = true;
+  #   pciIDs = [ "1002:67b0" "1002:aac8" "104c:8241"];
+  #   isolcpus = [ 1 2 5 6 ]; # core 2&3 + corresponding hyperthreads
+  #   hugePageSize = "1G";
+  #   hugePageCount = 20;
+  #   inputDevices = [
+  #     "/dev/input/by-id/usb-Logitech_G403_Prodigy_Gaming_Mouse_1274375E3330-event-mouse"
+  #     "/dev/input/by-id/usb-Corsair_Corsair_K65_RGB_Gaming_Keyboard_01031005AE3998A7534EC0CAF5001942-if01-event-kbd"
+  #   ];
+  #   tunnelPulse = true;
+  #   vmAddr = "192.168.122.28";
+  #   intelNested = true;
+  #   synergyKBM = false;
+  # };
 
+## -------------------
 
 # { pkgs, ... }:
 # let

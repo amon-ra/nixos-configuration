@@ -1,0 +1,174 @@
+{ users, pkgs }:
+{
+  hostName = "pcpjam";
+  nixpkgs = "/etc/nixpkgs";
+  grubDevice = "/dev/sda";
+  displayManager = "sddm";
+  desktopEnvironment = "nide";
+  users = with users; [
+    (juanra { groups = [ "wheel" "adbusers" ]; })
+  ];  
+  services.xserver.videoDrivers = [ "displaylink" "modesetting" "amdgpu" ];  
+  #extraKernelModules = [ "acpi-cpufreq" ];
+  extraServices = {
+    sshd = true;
+    emacs = false;
+    multiplayerGames = {
+      enable = true;
+    };
+    bluetooth = {
+      enable = true;
+    };
+    mailserver = {
+      enable = false;
+    };
+    compton ={
+      enable = true;
+    };
+    mythbackend = true;
+    mythfrontend = true;
+    storj = true;
+    bluray = true;
+    adb = true;
+    cryptos = {
+      enable = false;
+    };
+    syncthing = {
+      enable = false;
+      user = "jluttine";
+    };
+    restic = {
+      enable = true;
+      backups = {
+        pcpjam = {
+        repository = "rclone:backup1:/backups/pcpjam";
+        passwordFile = "/home/juanra/.config/restic.conf";
+        paths = [ "/home/juanra" ];
+        extraBackupArgs = [ "--exclude='Downloads tmp .env env2 env3 .cache node_modules logs .cache'" ];
+      };
+    };
+  };
+  extraPackages = with pkgs; [
+
+   #amdgpu
+   rocm-opencl-icd
+   rocm-opencl-runtime
+
+    # LaTeX
+    texlive.combined.scheme-full
+
+    # OpenStreetMap editor
+    josm
+
+    # 3D modelling
+    blender
+
+    # Zotero client
+    #qnotero
+
+    encfs
+
+    # E-books
+    fbreader
+    calibre
+
+    # RSS reader
+    # rssguard
+    #feedreader
+    rssguard
+
+    w_scan
+
+    # Disk usage analysis
+    filelight
+
+    # Photo manager
+    shotwell
+
+    # Audio editor
+    audacity
+
+    # Screen recorder
+    simplescreenrecorder
+
+    # MPD client
+    cantata
+
+    # Panorama stitcher (with raw support)
+    hugin
+    #dcraw # marked as insecure
+
+    ffmpeg-full
+
+    # HDR photography
+    luminanceHDR
+
+    # Instant messaging
+    tdesktop
+    linphone
+    element-desktop
+
+    # Encryption
+    openssl
+
+    # Tool for searching files/binaries from Nix packages
+    nix-index
+
+    # Programming
+    # emacs
+    gitAndTools.gitflow
+    gitAndTools.hub
+    direnv
+
+    # Password manager
+    pass
+
+    # Separate tiling window manager
+    #i3
+
+    patchelf
+
+    # Mobile SSH replacement
+    mosh
+
+    k3b
+
+    dvdplusrwtools
+
+    nixpkgs-review
+    nixpkgs-fmt
+    gdb
+
+    # Break timer
+    stretchly
+
+    (python3.withPackages (ps: with ps; [
+      numpy
+      scipy
+      # Python language server for Emacs
+      python-language-server
+    ]))
+  ];
+  boot.loader.grub.extraEntries = ''
+    menuentry "Nix-OS custom configuration" {
+      search --set=myroot --fs-uuid <UUID-HERE>
+      configfile "($myroot)/boot/grub/grub.cfg"
+    }
+  '';  
+  # extraServices.vfio-vm = {
+  #   enable = true;
+  #   pciIDs = [ "1002:67b0" "1002:aac8" "104c:8241"];
+  #   isolcpus = [ 1 2 5 6 ]; # core 2&3 + corresponding hyperthreads
+  #   hugePageSize = "1G";
+  #   hugePageCount = 20;
+  #   inputDevices = [
+  #     "/dev/input/by-id/usb-Logitech_G403_Prodigy_Gaming_Mouse_1274375E3330-event-mouse"
+  #     "/dev/input/by-id/usb-Corsair_Corsair_K65_RGB_Gaming_Keyboard_01031005AE3998A7534EC0CAF5001942-if01-event-kbd"
+  #   ];
+  #   tunnelPulse = true;
+  #   vmAddr = "192.168.122.28";
+  #   intelNested = true;
+  #   synergyKBM = false;
+  # };
+}
+# Aádir /boot/grub/custom.cfg

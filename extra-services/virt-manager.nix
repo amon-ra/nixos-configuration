@@ -25,7 +25,7 @@ in {
     #   4243 # stuntrally
     # ];
     #networking.firewall.allowedUDPPorts = [ 26000 ];
-    boot.kernelModules = [ "kvm-intel" "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
+    boot.kernelModules = [ "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
     #boot.extraModprobeConfig = "options kvm_intel nested=1";
     networking.networkmanager.enable = true;
     # environment.etc."NetworkManager/system-connections/my-network.nmconnection" = {
