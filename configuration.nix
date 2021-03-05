@@ -423,7 +423,7 @@
 
       ] ++ cfg.extraPackages;
 
-      programs.docker.enable = true;        
+      #programs.docker.enable = true;        
       
     }
 
