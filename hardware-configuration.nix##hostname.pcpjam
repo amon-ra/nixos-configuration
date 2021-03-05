@@ -16,6 +16,7 @@
   #boot.zfs.forceImportAll = false;
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
+  services.xserver.videoDrivers = [ "displaylink" "modesetting" "amdgpu" ];  
 
   fileSystems."/" =
     { device = "rpool/root/nixos";

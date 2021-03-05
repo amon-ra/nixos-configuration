@@ -8,7 +8,6 @@
   users = with users; [
     (juanra { groups = [ "wheel" "adbusers" ]; })
   ];  
-  services.xserver.videoDrivers = [ "displaylink" "modesetting" "amdgpu" ];  
   #extraKernelModules = [ "acpi-cpufreq" ];
   extraServices = {
     sshd = true;
