@@ -17,7 +17,7 @@ with lib;
         enable = true;
         shadow = false;
         inactiveOpacity = 0.85;
-        menuOpacity = 1;
+        menuOpacity = 1.0;
         fade = true;
         fadeDelta = 3;
     };
