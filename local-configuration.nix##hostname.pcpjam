@@ -2,7 +2,7 @@
 {
   hostName = "pcpjam";
   nixpkgs = "/etc/nixpkgs";
-  grubDevice = "/dev/sda";
+  grubDevice = "/dev/disk/by-id/nvme-Micron_2210_MTFDHBA512QFD_20462B83ECAF";
   displayManager = "sddm";
   desktopEnvironment = "nide";
   users = with users; [
@@ -50,9 +50,9 @@
   };
   extraPackages = with pkgs; [
 
-   #amdgpu
-   rocm-opencl-icd
-   rocm-opencl-runtime
+    #amdgpu
+    rocm-opencl-icd
+    rocm-opencl-runtime
 
     # LaTeX
     texlive.combined.scheme-full
@@ -149,12 +149,12 @@
       python-language-server
     ]))
   ];
-  boot.loader.grub.extraEntries = ''
-    menuentry "Nix-OS custom configuration" {
-      search --set=myroot --fs-uuid <UUID-HERE>
-      configfile "($myroot)/boot/grub/grub.cfg"
-    }
-  '';  
+  #boot.loader.grub.extraEntries = ''
+  #   menuentry "Nix-OS custom configuration" {
+  #     search --set=myroot --fs-uuid <UUID-HERE>
+  #     configfile "($myroot)/boot/grub/grub.cfg"
+  #   }
+  # '';  
   # extraServices.vfio-vm = {
   #   enable = true;
   #   pciIDs = [ "1002:67b0" "1002:aac8" "104c:8241"];
@@ -170,5 +170,5 @@
   #   intelNested = true;
   #   synergyKBM = false;
   # };
+  # Add /boot/grub/custom.cfg
 }
-# Aádir /boot/grub/custom.cfg
