@@ -41,10 +41,11 @@
       enable = true;
       backups = {
         pcpjam = {
-        repository = "rclone:backup1:/backups/pcpjam";
-        passwordFile = "/home/juanra/.config/restic.conf";
-        paths = [ "/home/juanra" ];
-        extraBackupArgs = [ "--exclude='Downloads tmp .env env2 env3 .cache node_modules logs .cache'" ];
+          repository = "rclone:backup1:/backups/pcpjam";
+          passwordFile = "/home/juanra/.config/restic.conf";
+          paths = [ "/home/juanra" ];
+          extraBackupArgs = [ "--exclude='Downloads tmp .env env2 env3 .cache node_modules logs .cache'" ];
+        };
       };
     };
   };
