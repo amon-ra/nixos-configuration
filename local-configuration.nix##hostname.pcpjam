@@ -1,5 +1,6 @@
 { users, pkgs }:
 {
+  allowUnfree = true;
   hostName = "pcpjam";
   nixpkgs = "/etc/nixpkgs";
   grubDevice = "/dev/disk/by-id/nvme-Micron_2210_MTFDHBA512QFD_20462B83ECAF";
