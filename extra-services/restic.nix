@@ -15,7 +15,7 @@ with lib;
   config = let
     cfg = config.localConfiguration.extraServices.restic;
   in mkIf cfg.enable {
-      restic.backups = cfg.backups;
+      services.restic.backups = cfg.backups;
     # restic.backups.pcpjam = {
     #   repository = "rclone:backup1:/backups/pcpjam";
     #   passwordFile = "/home/juanra/.config/restic.conf";
