@@ -22,9 +22,9 @@
     mailserver = {
       enable = false;
     };
-    compton ={
-      enable = true;
-    };
+    #compton ={
+    #  enable = true;
+    #};
     mythbackend = true;
     mythfrontend = true;
     storj = true;
