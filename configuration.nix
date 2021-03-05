@@ -68,67 +68,67 @@
 
   config = let
 
-    extensions = (with pkgs.vscode-extensions; [
-        bbenoist.Nix
-        VisualStudioExptTeam.vscodeintellicode
-        ms-python.python
-        ms-python.vscode-pylance
-        donjayamanne.python-extension-pack
-        kevinrose.vsc-python-indent
-        magicstack.magicpython
-        njpwerner.autodocstring
-        ms-azuretools.vscode-docker
-        ms-vscode-remote.remote-ssh
-        ritwickdey.liveserver
-        ms-vsliveshare.vsliveshare
-        ms-vsliveshare.vsliveshare-audio
-        bycedric.vscode-expo
-        vscoss.vscode-ansible
-        hookyqr.beautify
-        giladgray.theme-blueprint
-        alefragnani.bookmarks
-        deerawan.vscode-dash
-        msjsdiag.debugger-for-chrome
-        batisteo.vscode-django
-        editorconfig.editorconfig
-        dbaeumer.vscode-eslint
-        eamodio.gitlens
-        dchanco.vsc-invoke
-        xabikos.javascriptsnippets
-        wholroyd.jinja
-        kiteco.kite
-        emilast.logfilehighlighter
-        jeffery9.odoo-snippets
-        jigar-patel.odoosnippets
-        sandcastle.vscode-open
-        fabiospampinato.vscode-open-multiple-files
-        ryu1kn.partial-diff
-        felixfbecker.php-pack
-        mechatroner.rainbow-csv
-        eamodio.restore-editors
-        emeraldwalk.runonsave
-        wayou.vscode-todo-highlight
-        gruntfuggly.todo-tree
-        octref.vetur
-        uctakeoff.vscode-counter
-        yahya-gilany.vscode-pomodoro
-        wakatime.vscode-wakatime
-        johnbillion.vscode-wordpress-hooks
-        wordpresstoolbox.wordpress-toolbox
-        redhat.vscode-xml
-        github.vscode-pull-request-github
-        dbaeumer.jshint
-        bajdzis.vscode-database
-    ]);
+      # extensions = (with pkgs.vscode-extensions; [
+      #     bbenoist.Nix
+      #     VisualStudioExptTeam.vscodeintellicode
+      #     ms-python.python
+      #     ms-python.vscode-pylance
+      #     donjayamanne.python-extension-pack
+      #     kevinrose.vsc-python-indent
+      #     magicstack.magicpython
+      #     njpwerner.autodocstring
+      #     ms-azuretools.vscode-docker
+      #     ms-vscode-remote.remote-ssh
+      #     ritwickdey.liveserver
+      #     ms-vsliveshare.vsliveshare
+      #     ms-vsliveshare.vsliveshare-audio
+      #     bycedric.vscode-expo
+      #     vscoss.vscode-ansible
+      #     hookyqr.beautify
+      #     giladgray.theme-blueprint
+      #     alefragnani.bookmarks
+      #     deerawan.vscode-dash
+      #     msjsdiag.debugger-for-chrome
+      #     batisteo.vscode-django
+      #     editorconfig.editorconfig
+      #     dbaeumer.vscode-eslint
+      #     eamodio.gitlens
+      #     dchanco.vsc-invoke
+      #     xabikos.javascriptsnippets
+      #     wholroyd.jinja
+      #     kiteco.kite
+      #     emilast.logfilehighlighter
+      #     jeffery9.odoo-snippets
+      #     jigar-patel.odoosnippets
+      #     sandcastle.vscode-open
+      #     fabiospampinato.vscode-open-multiple-files
+      #     ryu1kn.partial-diff
+      #     felixfbecker.php-pack
+      #     mechatroner.rainbow-csv
+      #     eamodio.restore-editors
+      #     emeraldwalk.runonsave
+      #     wayou.vscode-todo-highlight
+      #     gruntfuggly.todo-tree
+      #     octref.vetur
+      #     uctakeoff.vscode-counter
+      #     yahya-gilany.vscode-pomodoro
+      #     wakatime.vscode-wakatime
+      #     johnbillion.vscode-wordpress-hooks
+      #     wordpresstoolbox.wordpress-toolbox
+      #     redhat.vscode-xml
+      #     github.vscode-pull-request-github
+      #     dbaeumer.jshint
+      #     bajdzis.vscode-database
+      # ]);
       # ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
       #   name = "remote-ssh-edit";
       #   publisher = "ms-vscode-remote";
       #   version = "0.47.2";
       #   sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
       # }];
-    vscode-with-extensions = pkgs.vscode-with-extensions.override {
-        vscodeExtensions = extensions;
-      };
+      # vscode-with-extensions = pkgs.vscode-with-extensions.override {
+      #     vscodeExtensions = extensions;
+      #   };
 
     localConfiguration = (import ./local-configuration.nix) {
       inherit pkgs;
@@ -419,7 +419,7 @@
 
         skype
 
-        vscode-with-extensions
+        # vscode-with-extensions
 
       ] ++ cfg.extraPackages;
 
