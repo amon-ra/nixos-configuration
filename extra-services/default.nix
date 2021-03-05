@@ -31,5 +31,7 @@
       ./swap.nix
       ./games.nix
       ./empty-domain.nix
+      ./compton.nix
+      ./restic.nix
     ];
 }
