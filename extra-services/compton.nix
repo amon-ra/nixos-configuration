@@ -16,8 +16,8 @@ with lib;
     services.compton = {
         enable = true;
         shadow = false;
-        inactiveOpacity = "0.85";
-        menuOpacity = "1.0";
+        inactiveOpacity = 0.85;
+        menuOpacity = 1;
         fade = true;
         fadeDelta = 3;
     };
