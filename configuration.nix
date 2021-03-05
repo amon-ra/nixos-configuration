@@ -70,7 +70,7 @@
 
     extensions = (with pkgs.vscode-extensions; [
         bbenoist.Nix
-        visualstudioexptteam.vscodeintellicode
+        VisualStudioExptTeam.vscodeintellicode
         ms-python.python
         ms-python.vscode-pylance
         donjayamanne.python-extension-pack
