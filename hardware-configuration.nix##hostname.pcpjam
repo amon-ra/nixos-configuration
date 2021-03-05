@@ -16,8 +16,10 @@
   #boot.zfs.forceImportAll = false;
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
+  services.zfs.autoSnapshot.enable = true;
   services.xserver.videoDrivers = [ "displaylink" "modesetting" "amdgpu" ];  
-
+  networking.hostId = "10faa34b";
+  
   fileSystems."/" =
     { device = "rpool/root/nixos";
       fsType = "zfs";
