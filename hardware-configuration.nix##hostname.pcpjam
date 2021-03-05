@@ -17,7 +17,8 @@
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
   services.zfs.autoSnapshot.enable = true;
-  services.xserver.videoDrivers = [ "displaylink" "modesetting" "amdgpu" ];  
+  #services.xserver.videoDrivers = [ "displaylink" "modesetting" "amdgpu" ];  
+  services.xserver.videoDrivers = [ "amdgpu" ];  
   networking.hostId = "10faa34b";
   
   fileSystems."/" =
