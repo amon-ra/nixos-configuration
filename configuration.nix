@@ -270,9 +270,9 @@
 
       # Fonts
       fonts = {
-        fontDir = {
-          enable = true;
-        };
+        # fontDir = {
+        #   enable = true;
+        # };
         enableGhostscriptFonts = true;
         fonts = with pkgs; [
           #corefonts # Microsoft free fonts
