@@ -4,7 +4,7 @@
   hostName = "pcpjam";
   nixpkgs = "/etc/nixpkgs";
   bootMode = "uefi";
-  grubDevice = "/dev/disk/by-id/nvme0n1";
+  grubDevice = "/dev/nvme0n1";
   users = with users; [
     (juanra { groups = [ "wheel" "adbusers" ]; })
   ];

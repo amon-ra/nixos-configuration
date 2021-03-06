@@ -15,6 +15,7 @@
   boot.supportedFilesystems = [ "zfs" ];
   boot.loader.grub.copyKernels = true;
   #boot.zfs.forceImportAll = false;
+  boot.zfs.devNodes = "/dev/disk/by-partuuid";
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
   services.zfs.autoSnapshot = {
