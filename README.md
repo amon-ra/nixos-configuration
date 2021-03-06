@@ -2,6 +2,10 @@
 
 My personal NixOS configurations.
 
+Create passwords file:
+mkpasswd -m sha-512
+echo "{ user = $hash; }" > passwords
+
 You can put these configuration files under `/etc/nixos` as follows:
 
 ```
@@ -180,6 +184,8 @@ checkout the desired branch/commit and create a symlink `ln -s /mnt/etc/nixpkgs
 /etc/nixpkgs`.
 
 ### Installing
+# Install displaylink
+NIX_STORE_DIR=/mnt/nix/store nix-prefetch-url file://displaylink.zip
 
 #### From live USB stick
 

@@ -4,7 +4,8 @@
   imports =
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
-
+  
+  boot.loader.efi.canTouchEfiVariables = true;
   #boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ "dm-cache" ];
   boot.kernelModules = [ "amdgpu" ];
@@ -16,7 +17,11 @@
   #boot.zfs.forceImportAll = false;
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
-  services.zfs.autoSnapshot.enable = true;
+  services.zfs.autoSnapshot = {
+    enable = true;
+    frequent = 8; # keep the latest eight 15-minute snapshots (instead of four)
+    monthly = 1;  # keep only one monthly snapshot (instead of twelve)
+  };
   #services.xserver.videoDrivers = [ "displaylink" "modesetting" "amdgpu" ];  
   services.xserver.videoDrivers = [ "amdgpu" ];  
   networking.hostId = "10faa34b";
@@ -29,7 +34,7 @@
   #boot.initrd.luks.devices."luks-nixos-root".device = "/dev/disk/by-uuid/a7561bd1-f3ef-4f4d-ab3b-69121e64689f";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-label/boot";
+    { device = "/dev/disk/by-label/BOOT";
       fsType = "vfat";
     };
 
