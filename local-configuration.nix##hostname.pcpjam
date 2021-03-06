@@ -1,10 +1,10 @@
 { users, pkgs }:
 {
   allowUnfree = true;
-  bootMode = "uefi";
   hostName = "pcpjam";
   nixpkgs = "/etc/nixpkgs";
-  grubDevice = "/dev/disk/by-id/nvme-Micron_2210_MTFDHBA512QFD_20462B83ECAF";
+  bootMode = "uefi";
+  grubDevice = "/dev/disk/by-id/nvme0n1";
   users = with users; [
     (juanra { groups = [ "wheel" "adbusers" ]; })
   ];

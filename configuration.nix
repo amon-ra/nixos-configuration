@@ -139,7 +139,7 @@
 
   in {
       nix = {
-        useSandbox = true;
+        useSandbox = false;
         # See: https://github.com/nix-community/nix-direnv#usage
         extraOptions = ''
           keep-derivations = true

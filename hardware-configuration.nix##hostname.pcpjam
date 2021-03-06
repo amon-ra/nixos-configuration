@@ -4,7 +4,7 @@
   imports =
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
-  
+
   boot.loader.efi.canTouchEfiVariables = true;
   #boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ "dm-cache" ];
@@ -28,6 +28,11 @@
   
   fileSystems."/" =
     { device = "rpool/root/nixos";
+      fsType = "zfs";
+    };
+
+  fileSystems."/nix" =
+    { device = "rpool/nix";
       fsType = "zfs";
     };
 
