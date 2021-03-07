@@ -28,7 +28,7 @@ rec {
       }";
     };
     homeDirectory = "/home/${home.username}";
-    username = "fortuneteller2k";
+    username = "juanra";
     packages = with pkgs; [
       betterdiscordctl
       bpytop
