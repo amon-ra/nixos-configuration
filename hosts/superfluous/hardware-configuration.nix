@@ -6,32 +6,56 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "ahci"
-    "ohci_pci"
-    "ehci_pci"
-    "pata_atiixp"
-    "usb_storage"
-    "sd_mod"
-    "sr_mod"
-    "rtsx_pci_sdmmc"
-  ];
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-amd" "amdgpu" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/7d808f1f-d529-4b23-9ae5-2dbd4a593978";
-    fsType = "btrfs";
+  #boot.loader.grub.copyKernels = true;
+  # https://bugzilla.kernel.org/show_bug.cgi?id=110941
+  #boot.kernelParams = [ "intel_pstate=no_hwp" ];
+  #boot.kernelParams = [ "amd_iommu=pt" "ivrs_ioapic[32]=00:14.0" "iommu=soft" ];                                                                                                                                   
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportAll = false;
+  boot.zfs.devNodes = "/dev/disk/by-partuuid";
+  services.zfs.autoScrub.enable = true;
+  services.zfs.trim.enable = true;
+  services.zfs.autoSnapshot = {
+    enable = true;
+    frequent = 8; # keep the latest eight 15-minute snapshots (instead of four)
+    monthly = 1;  # keep only one monthly snapshot (instead of twelve)
   };
+  networking.hostId = "10faa34b";
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/AADB-6090";
-    fsType = "vfat";
-  };
+  fileSystems."/" =
+    { device = "rpool/root/nixos";
+      fsType = "zfs";
+    };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/c541f3d8-d78e-49b6-99ea-ccd8091924c3"; }];
+  fileSystems."/nix" =
+    { device = "rpool/nix";
+      fsType = "zfs";
+    };
+
+  #boot.initrd.luks.devices."luks-nixos-root".device = "/dev/disk/by-uuid/a7561bd1-f3ef-4f4d-ab3b-69121e64689f";
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-label/BOOT";
+      fsType = "vfat";
+    };
+
+  fileSystems."/home" =
+    { 
+      device = "rpool/home";
+      fsType = "zfs";
+    };
+
+  # boot.initrd.luks.devices."luks-nixos-var".device = "/dev/disk/by-uuid/54c4bc98-ac8c-43e1-9c98-1889ff858dfc";
+  # luks-nixos-var contains an LVM so it needs to be opened after LVM has been
+  # activated
+  # boot.initrd.luks.devices."luks-nixos-var".preLVM = false;
+
+  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
 
 }

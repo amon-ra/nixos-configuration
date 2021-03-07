@@ -52,3 +52,10 @@ With =theme.lightModeEnabled = false;=
 With =theme.lightModeEnabled = true;=
 
 [[img/light-mode.png]]
+
+# TODO
+- https://github.com/CaptainSpof/dotfiles
+- https://github.com/CaptainSpof/dotfiles/tree/master/hosts/dafbox
+- https://github.com/divnix/devos
+- https://github.com/fortuneteller2k/nix-config/blob/master/README.org
+- https://git.deck.sh/shark/vfio-config/-/blob/master/vm.xml
