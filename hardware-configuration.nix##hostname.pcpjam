@@ -28,11 +28,12 @@
   networking.hostId = "10faa34b";
 
   #services.xserver.videoDrivers = [ "displaylink" "modesetting" "amdgpu" ];  
-  services.xserver.videoDrivers = [ "amdgpu" ];  
+  services.xserver.videoDrivers = [ "amdgpu" "modesetting" ];  
   hardware.cpu.amd.updateMicrocode = true;                                                                                                                                                                         
   hardware.enableRedistributableFirmware = true;                                                                                                                                                                   
   hardware.opengl.enable = true;                                                                                                                                                                                   
   hardware.opengl.driSupport = true;    
+  services.xserver.layout = "es";
   
   fileSystems."/" =
     { device = "rpool/root/nixos";

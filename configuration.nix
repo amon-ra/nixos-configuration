@@ -23,7 +23,7 @@
     };
     version = mkOption {
       type = types.str;
-      default = "17.03";
+      default = "20.09";
     };
     users = mkOption {
       type = types.listOf types.attrs;
@@ -192,6 +192,8 @@
       # Set your time zone.
       time.timeZone = cfg.timezone;
 
+      i18n.consoleUseXkbConfig = true;
+      
       # Manual upgrades
       system.autoUpgrade.enable = cfg.autoupgrade;
 
