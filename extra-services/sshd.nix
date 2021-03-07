@@ -14,8 +14,8 @@ with lib;
     services.openssh = {
       enable = true;
       permitRootLogin = "no";
-      ports = [10022];
-      passwordAuthentication = false;
+      ports = [22];
+      passwordAuthentication = true;
     };
     networking.firewall.enable = true;
     networking.firewall.allowPing = true;
