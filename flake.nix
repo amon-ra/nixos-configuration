@@ -12,10 +12,10 @@
     rust.url = "github:oxalica/rust-overlay";
   };
   outputs = { self, home, fork, master, stable, unstable, nur, nvim-nightly, rust, ... }@inputs: {
-    nixosConfigurations.superfluous = import ./hosts/superfluous {
+    nixosConfigurations.pcpjam = import ./hosts/pcpjam {
       inherit home inputs fork master stable unstable nur nvim-nightly rust;
       nixpkgs = unstable;
     };
-    superfluous = self.nixosConfigurations.superfluous.config.system.build.toplevel;
+    pcpjam = self.nixosConfigurations.pcpjam.config.system.build.toplevel;
   };
 }
