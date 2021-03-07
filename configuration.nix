@@ -169,12 +169,20 @@
         # UEFI systems
         loader.systemd-boot = lib.mkIf (cfg.bootMode == "uefi") {
           enable = true;
-          editor = false;
+          editor = true;
         };
+
+        loader.efi.canTouchEfiVariables = lib.mkIf (cfg.bootMode == "uefi") true;
+        
         # Splash screen at boot time
         plymouth.enable = false;
 
         cleanTmpDir = true;
+
+        supportedFilesystems = [ "zfs" ];
+        zfs.forceImportAll = false;
+        zfs.devNodes = "/dev/disk/by-partuuid";
+
 
       };
 
@@ -215,17 +223,17 @@
       networking = {
         hostName = cfg.hostName;
         networkmanager.enable = true;
-        firewall = {
-          enable = true;
-          # Enable PPTP VPN
-          autoLoadConntrackHelpers = true;
-          connectionTrackingModules = [ "pptp" ];
-          #autoLoadConntrackHelpers = true;
-          extraCommands = ''
-            iptables -A INPUT -p 47 -j ACCEPT
-            iptables -A OUTPUT -p 47 -j ACCEPT
-          '';
-        };
+        # firewall = {
+        #   enable = false;
+        #   # Enable PPTP VPN
+        #   autoLoadConntrackHelpers = true;
+        #   connectionTrackingModules = [ "pptp" ];
+        #   #autoLoadConntrackHelpers = true;
+        #   extraCommands = ''
+        #     iptables -A INPUT -p 47 -j ACCEPT
+        #     iptables -A OUTPUT -p 47 -j ACCEPT
+        #   '';
+        # };
       };
 
       # Hardware

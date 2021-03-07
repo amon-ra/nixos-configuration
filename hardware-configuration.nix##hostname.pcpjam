@@ -9,12 +9,12 @@
   #boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ "dm-cache" ];
   boot.kernelModules = [ "amdgpu" ];
-  boot.extraModulePackages = [ ];
+  #boot.extraModulePackages = [ ];
   # https://bugzilla.kernel.org/show_bug.cgi?id=110941
   #boot.kernelParams = [ "intel_pstate=no_hwp" ];
   boot.supportedFilesystems = [ "zfs" ];
-  boot.loader.grub.copyKernels = true;
-  #boot.zfs.forceImportAll = false;
+  #boot.loader.grub.copyKernels = true;
+  boot.zfs.forceImportAll = false;
   boot.zfs.devNodes = "/dev/disk/by-partuuid";
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;

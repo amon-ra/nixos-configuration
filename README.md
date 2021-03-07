@@ -3,8 +3,7 @@
 My personal NixOS configurations.
 
 Create passwords file:
-mkpasswd -m sha-512
-echo "{ user = $hash; }" > passwords
+echo "{ juanra = \"$(mkpasswd -m sha-512)\"; }" > passwords
 
 You can put these configuration files under `/etc/nixos` as follows:
 
@@ -72,6 +71,13 @@ Test internet connection:
 ```
 ping google.com
 ```
+
+##ZFS
+zpool create -o ashift=12 -o altroot=/mnt -O mountpoint=none -O  acltype=posixacl -O xattr=sa -O compression=lz4 rpool mirror /dev/sda2 /dev/sdb2 mirror /dev/disk/by-partuuid/xxxx /dev/disk/by-partuuid/xxxx
+zfs create -o mountpoint=legacy rpool/root
+zfs create -o mountpoint=legacy rpool/root/nixos
+zfs create -o mountpoint=legacy rpool/home
+zfs create -o refreservation=1G -o mountpoint=none rpool/reserved
 
 ### Creating fully encrypted file systems
 
