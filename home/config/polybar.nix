@@ -116,7 +116,7 @@ with theme; {
 
   "module/wireless" = {
     type = "internal/network";
-    interface = "wlo1";
+    interface = "wlp4s0";
     interval = 10;
     format-connected = "<label-connected>";
     format-connected-foreground = "#${colors.textColor}";

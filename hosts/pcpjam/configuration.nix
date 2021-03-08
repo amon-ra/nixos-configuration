@@ -2,10 +2,6 @@
 
 let
   theme = (import ../../config/theme.nix);
-  nide = builtins.fetchTarball {
-    url = "https://github.com/jluttine/NiDE/archive/0.2.6.tar.gz";
-    sha256 = "997e0ebe94198804f895596c5948061f9e865f837efbbc6387f66d93f49b9fb6";
-  };
 in
 {
   boot = {
@@ -61,7 +57,7 @@ in
       extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl ];
     };
   };
-  imports = [ ./hardware-configuration.nix "${nide}/nix/configuration.nix" ];
+  imports = [ ./hardware-configuration.nix "../config/i3/config.nix" "../config/i3/polybar.nix" "../config/i3/rofi.nix" ];
   i18n.defaultLocale = "es_ES.UTF-8";
   environment = {
     pathsToLink = [ "/share/zsh" ];
@@ -179,8 +175,8 @@ in
     };
     useDHCP = false;
     interfaces = {
-      eno1.useDHCP = true;
-      wlo1.useDHCP = true;
+      enp5s0.useDHCP = true;
+      wlp4s0.useDHCP = true;
     };
   };
   powerManagement.cpuFreqGovernor = "performance";
@@ -266,16 +262,13 @@ in
       videoDrivers = [ "amdgpu" "modesetting" ];
       displayManager = {
         lightdm.enable = true;
-        defaultSession = "xterm";
+        defaultSession = "i3";
         autoLogin = { 
           enable = true; 
           user = "juanra"; 
         };         
       };
-      desktopManager.nide = {
-        enable = true;
-        installPackages = true;
-      };      
+      desktopManager.xterm.enable = false;    
       # windowManager = {
       #   xmonad = {
       #     enable = true;

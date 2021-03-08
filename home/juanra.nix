@@ -18,7 +18,7 @@ rec {
     };
   };
   home = {
-    activation.reloadPolybar = "${pkgs.polybar}/bin/polybar-msg cmd restart";
+    # activation.reloadPolybar = "${pkgs.polybar}/bin/polybar-msg cmd restart";
     file = {
       ".config/qt5ct/colors/Horizon.conf".source = ./config/Horizon.conf;
       ".icons/default".source = "${
@@ -162,43 +162,43 @@ rec {
       shellAliases = (import ./config/sh-aliases.nix);
     };
   };
-  services = {
-    dunst = {
-      enable = true;
-      iconTheme = {
-        name = "Papirus";
-        size = "32x32";
-        package = pkgs.papirus-icon-theme;
-      };
-      settings = (import ./config/dunst.nix { inherit theme; });
-    };
-    mpd = {
-      enable = true;
-      package = pkgs.stable.mpd;
-      musicDirectory = "${xdg.userDirs.music}";
-      extraConfig = (import ./config/mpd.nix);
-    };
-    mpdris2 = {
-      enable = true;
-      multimediaKeys = true;
-      notifications = true;
-    };
-    playerctld.enable = true;
-    polybar = {
-      enable = true;
-      script = "polybar -l=trace main &";
-      config = (import ./config/polybar.nix { inherit pkgs theme; });
-    };
-  };
-  xdg = {
-    enable = true;
-    userDirs = {
-      enable = true;
-      documents = "${home.homeDirectory}/Extras/Documents";
-      music = "${home.homeDirectory}/Media/Music";
-      pictures = "${home.homeDirectory}/Media/Pictures";
-      videos = "${home.homeDirectory}/Media/Videos";
-    };
-  };
-  xresources.extraConfig = (import ./config/xresources.nix { inherit theme; });
+  # services = {
+  #   dunst = {
+  #     enable = true;
+  #     iconTheme = {
+  #       name = "Papirus";
+  #       size = "32x32";
+  #       package = pkgs.papirus-icon-theme;
+  #     };
+  #     settings = (import ./config/dunst.nix { inherit theme; });
+  #   };
+  #   mpd = {
+  #     enable = true;
+  #     package = pkgs.stable.mpd;
+  #     musicDirectory = "${xdg.userDirs.music}";
+  #     extraConfig = (import ./config/mpd.nix);
+  #   };
+  #   mpdris2 = {
+  #     enable = true;
+  #     multimediaKeys = true;
+  #     notifications = true;
+  #   };
+  #   playerctld.enable = true;
+  #   polybar = {
+  #     enable = true;
+  #     script = "polybar -l=trace main &";
+  #     config = (import ./config/polybar.nix { inherit pkgs theme; });
+  #   };
+  # };
+  # xdg = {
+  #   enable = true;
+  #   userDirs = {
+  #     enable = true;
+  #     documents = "${home.homeDirectory}/Extras/Documents";
+  #     music = "${home.homeDirectory}/Media/Music";
+  #     pictures = "${home.homeDirectory}/Media/Pictures";
+  #     videos = "${home.homeDirectory}/Media/Videos";
+  #   };
+  # };
+  # xresources.extraConfig = (import ./config/xresources.nix { inherit theme; });
 }
