@@ -32,7 +32,7 @@ in
         enable = true;
         editor = false;
         configurationLimit = 10;
-        timeout = 0;
+        #timeout = 0;
       };
       # grub = {
       #   enable = true;
