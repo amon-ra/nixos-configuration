@@ -267,7 +267,6 @@ in
       displayManager = {
         lightdm.enable = true;
         defaultSession = "none+i3";
-        greeter.enable = false; 
         autoLogin = { 
           enable = true; 
           user = "juanra"; 
