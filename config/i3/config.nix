@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 {
-  xsession.windowManager.i3 = {
+  xserver.windowManager.i3 = {
     enable = true;
     package = pkgs.i3-gaps;
     
@@ -25,7 +25,7 @@
         "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
         "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -modi drun -show drun";
         "${modifier}+Shift+d" = "exec ${pkgs.rofi}/bin/rofi -show window";
-        "${modifier}+b" = "exec ${pkgs.brave}/bin/brave";
+        # "${modifier}+b" = "exec ${pkgs.brave}/bin/brave";
         "${modifier}+Shift+x" = "exec systemctl suspend";
       };
       
