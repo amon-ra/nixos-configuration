@@ -266,7 +266,7 @@ in
       videoDrivers = [ "amdgpu" "modesetting" ];
       displayManager = {
         lightdm.enable = true;
-        defaultSession = "none+i3";
+        defaultSession = "xterm";
         autoLogin = { 
           enable = true; 
           user = "juanra"; 
