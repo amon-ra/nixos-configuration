@@ -57,7 +57,7 @@ in
       extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl ];
     };
   };
-  imports = [ ./hardware-configuration.nix "../config/i3/config.nix" "../config/i3/polybar.nix" "../config/i3/rofi.nix" ];
+  imports = [ ./hardware-configuration.nix ../config/i3/config.nix ../config/i3/polybar.nix ../config/i3/rofi.nix ];
   i18n.defaultLocale = "es_ES.UTF-8";
   environment = {
     pathsToLink = [ "/share/zsh" ];
