@@ -3,7 +3,8 @@
 let
   theme = (import ../../config/theme.nix);
   nide = builtins.fetchTarball {
-    url = "https://github.com/jluttine/NiDE/archive/0.2.6.zip";
+    url = "https://github.com/jluttine/NiDE/archive/0.2.6.tar.gz";
+    sha256 = "997e0ebe94198804f895596c5948061f9e865f837efbbc6387f66d93f49b9fb6";
   };
 in
 {
@@ -27,13 +28,19 @@ in
     };
     loader = {
       efi.canTouchEfiVariables = true;
-      grub = {
+      systemd-boot = {
         enable = true;
-        device = "nodev";
-        efiSupport = true;
-        useOSProber = true;
-        gfxmodeEfi = "1366x768";
+        editor = false;
+        configurationLimit = 10;
+        timeout = 0;
       };
+      # grub = {
+      #   enable = true;
+      #   device = "nodev";
+      #   efiSupport = true;
+      #   useOSProber = true;
+      #   gfxmodeEfi = "1366x768";
+      # };
     };
   };
   console = {
