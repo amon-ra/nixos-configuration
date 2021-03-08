@@ -266,8 +266,17 @@ in
       videoDrivers = [ "amdgpu" "modesetting" ];
       displayManager = {
         lightdm.enable = true;
-        # defaultSession = "none+xmonad";
+        defaultSession = "none+i3";
+        greeter.enable = false; 
+        autoLogin = { 
+          enable = true; 
+          user = "juanra"; 
+        };         
       };
+      desktopManager.nide = {
+        enable = true;
+        installPackages = true;
+      };      
       # windowManager = {
       #   xmonad = {
       #     enable = true;
