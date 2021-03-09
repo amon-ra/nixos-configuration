@@ -17,8 +17,10 @@ in
       "vt.default_blu=0x1c,0x78,0x98,0x95,0xd9,0xae,0xe3,0xed,0x30,0x88,0xa4,0xa7,0xde,0xb7,0xe6,0xed"
     ];
     kernel.sysctl = {
-      "vm.swappiness" = 1;
-      "vm.vfs_cache_pressure" = 75;
+      "net.ipv4.ip_forward" = 1;
+      "vm.swappiness" = 10;
+      "vm.vfs_cache_pressure" = 500;
+      # "vm.overcommit_memory" = 1;
       "kernel.printk" = "3 3 3 3";
       "kernel.unprivileged_userns_clone" = 1;
     };

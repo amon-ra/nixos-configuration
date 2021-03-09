@@ -12,12 +12,6 @@
     initrd.kernelModules = [ ];
     kernelModules = [ "kvm-amd" "amdgpu" ];
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
-    kernel.sysctl = {
-        "net.ipv4.ip_forward" = 1;
-        # "vm.overcommit_memory" = 1;
-        "vm.swappiness" = 10;
-        "vm.vfs_cache_pressure" = 500;
-    };
     # kernelParams = [
     #   "transparent_hugepage=never"
     # ];    
