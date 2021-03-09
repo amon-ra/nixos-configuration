@@ -4,19 +4,19 @@ let
   theme = (import ../config/theme.nix);
 in
 rec {
-  fonts.fontconfig.enable = true;
-  gtk = {
-    enable = true;
-    font.name = "Inter";
-    iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "${if theme.lightModeEnabled then "Papirus-Light" else "Papirus-Dark"}";
-    };
-    theme = {
-      package = pkgs.phocus;
-      name = "phocus";
-    };
-  };
+  # fonts.fontconfig.enable = true;
+  # gtk = {
+  #   enable = true;
+  #   font.name = "Inter";
+  #   iconTheme = {
+  #     package = pkgs.papirus-icon-theme;
+  #     name = "${if theme.lightModeEnabled then "Papirus-Light" else "Papirus-Dark"}";
+  #   };
+  #   theme = {
+  #     package = pkgs.phocus;
+  #     name = "phocus";
+  #   };
+  # };
   home = {
     # activation.reloadPolybar = "${pkgs.polybar}/bin/polybar-msg cmd restart";
     file = {
