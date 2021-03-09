@@ -130,10 +130,10 @@ rec {
         right = [ "Tasks" "LoadAverage" "Uptime" ];
       };
     };
-    ncmpcpp = {
-      enable = true;
-      settings = (import ./config/ncmpcpp.nix);
-    };
+    # ncmpcpp = {
+    #   enable = true;
+    #   settings = (import ./config/ncmpcpp.nix);
+    # };
     # neovim = {
     #   enable = true;
     #   package = pkgs.neovim-nightly;
