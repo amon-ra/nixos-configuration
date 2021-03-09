@@ -9,7 +9,8 @@ nixpkgs.lib.nixosSystem rec {
         filterOverlays = k: v: v == "regular" && hasSuffix ".nix" k;
         getOverlays = path: (lists.forEach (mapAttrsToList (name: _: path + ("/" + name))
           (filterAttrs filterOverlays (builtins.readDir path)))) import;
-        userOverlays = getOverlays ../../overlays;
+        # userOverlays = getOverlays ../../overlays;
+        userOverlays = [ ];
         nixpkgsOverlays = _: _: {
           fork = fork.legacyPackages.${system};
           head = master.legacyPackages.${system};

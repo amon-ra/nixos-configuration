@@ -63,7 +63,7 @@ rec {
       pfetch
       picard
       playerctl
-      qutebrowser
+      # qutebrowser
       ripcord
       head.sacad
       speedtest-cli
