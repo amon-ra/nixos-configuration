@@ -59,7 +59,7 @@ in
       extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl ];
     };
   };
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ../config/fonts ];
   i18n.defaultLocale = "es_ES.UTF-8";
   environment = {
     pathsToLink = [ "/share/zsh" ];
@@ -135,37 +135,6 @@ in
       zig
       zip
     ];
-  };
-  fonts = {
-    fonts = with pkgs; [
-      cozette
-      fantasque-sans-mono
-      input-fonts
-      inter
-      iosevka-ft
-      mplus-outline-fonts
-      nerdfonts
-      output-fonts
-      sarasa-gothic
-      scientifica
-      symbola
-      twemoji-color-font
-      xorg.fontbh100dpi
-    ];
-    fontconfig = {
-      enable = true;
-      dpi = 96;
-      defaultFonts = {
-        serif = [ "Sarasa Gothic J" ];
-        sansSerif = [ "Sarasa Gothic J" ];
-        monospace = [
-          "Iosevka FT"
-          "Iosevka Nerd Font"
-          "Sarasa Mono J"
-        ];
-        emoji = [ "Twitter Color Emoji" ];
-      };
-    };
   };
   networking = {
     hostName = "pcpjam";
