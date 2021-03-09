@@ -46,11 +46,6 @@ in
         x: 15
         y: 15
 
-    shell:
-      program: ${pkgs.tmuxnew}/bin/tmux
-      args:
-        - -f
-        - ${tmuxconf}
   '';
 
 }
