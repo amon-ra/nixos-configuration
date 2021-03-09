@@ -77,23 +77,23 @@ rec {
     stateVersion = "21.05";
   };
   imports = [
-    ./modules/alacritty
-    ./modules/base16
-    ./modules/comma
-    ./modules/dunst
-    ./modules/firefox
-    ./modules/mpd
-    ./modules/mpv
-    ./modules/nvim
-    ./modules/picom
-    ./modules/polybar
-    ./modules/ranger
-    ./modules/rofi
-    ./modules/styling
-    ./modules/weechat
-    ./modules/xsession
-    ./modules/zathura
-    ./modules/zsh
+    ./config/alacritty
+    ./config/base16
+    ./config/comma
+    ./config/dunst
+    ./config/firefox
+    ./config/mpd
+    ./config/mpv
+    ./config/nvim
+    ./config/picom
+    ./config/polybar
+    ./config/ranger
+    ./config/rofi
+    ./config/styling
+    ./config/weechat
+    ./config/xsession
+    ./config/zathura
+    ./config/zsh
   ];  
   programs = {
     # alacritty = {
