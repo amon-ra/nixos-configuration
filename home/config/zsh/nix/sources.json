@@ -1,0 +1,38 @@
+{
+    "fzf-tab": {
+        "branch": "master",
+        "description": "Replace zsh's default completion selection menu with fzf!",
+        "homepage": null,
+        "owner": "Aloxaf",
+        "repo": "fzf-tab",
+        "rev": "23377e74c3780a1d4807a821df4011d3c793e69c",
+        "sha256": "1fnn62qp9404z4qypx834h3464xij4wmhjrcgky87m3dr3f688yg",
+        "type": "tarball",
+        "url": "https://github.com/Aloxaf/fzf-tab/archive/23377e74c3780a1d4807a821df4011d3c793e69c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "zsh-autosuggestions": {
+        "branch": "master",
+        "description": "Fish-like autosuggestions for zsh",
+        "homepage": null,
+        "owner": "zsh-users",
+        "repo": "zsh-autosuggestions",
+        "rev": "ae315ded4dba10685dbbafbfa2ff3c1aefeb490d",
+        "sha256": "0h52p2waggzfshvy1wvhj4hf06fmzd44bv6j18k3l9rcx6aixzn6",
+        "type": "tarball",
+        "url": "https://github.com/zsh-users/zsh-autosuggestions/archive/ae315ded4dba10685dbbafbfa2ff3c1aefeb490d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "zsh-syntax-highlighting": {
+        "branch": "master",
+        "description": "Fish shell like syntax highlighting for Zsh.",
+        "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
+        "owner": "zsh-users",
+        "repo": "zsh-syntax-highlighting",
+        "rev": "e8517244f7d2ae4f9d979faf94608d6e4a74a73e",
+        "sha256": "1dd1l4g5hkx1pnl1dw4h8ignjhigrvkkcravfkifdl2zf3slyny7",
+        "type": "tarball",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/e8517244f7d2ae4f9d979faf94608d6e4a74a73e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}

@@ -71,13 +71,35 @@ rec {
       texlive.combined.scheme-medium
       ueberzug
     ];
+    sessionVariables = {
+      EDITOR = "nvim";
+    };    
     stateVersion = "21.05";
   };
+  imports = [
+    ./modules/alacritty
+    ./modules/base16
+    ./modules/comma
+    ./modules/dunst
+    ./modules/firefox
+    ./modules/mpd
+    ./modules/mpv
+    ./modules/nvim
+    ./modules/picom
+    ./modules/polybar
+    ./modules/ranger
+    ./modules/rofi
+    ./modules/styling
+    ./modules/weechat
+    ./modules/xsession
+    ./modules/zathura
+    ./modules/zsh
+  ];  
   programs = {
-    alacritty = {
-      enable = true;
-      settings = (import ./config/alacritty.nix { inherit theme; });
-    };
+    # alacritty = {
+    #   enable = true;
+    #   settings = (import ./config/alacritty.nix { inherit theme; });
+    # };
     bat = {
       enable = true;
       config = {
@@ -198,6 +220,7 @@ rec {
       music = "${home.homeDirectory}/Media/Music";
       pictures = "${home.homeDirectory}/Media/Pictures";
       videos = "${home.homeDirectory}/Media/Videos";
+      download = "${home.homeDirectory}/Downloads";
     };
   };
   xresources.extraConfig = (import ./config/xresources.nix { inherit theme; });

@@ -8,10 +8,10 @@
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot = {
-    initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
+    initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "acpi_call" ];
     initrd.kernelModules = [ ];
     kernelModules = [ "kvm-amd" "amdgpu" ];
-    extraModulePackages = [ ];
+    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
     kernel.sysctl = {
         "net.ipv4.ip_forward" = 1;
         # "vm.overcommit_memory" = 1;
@@ -36,6 +36,9 @@
     frequent = 8; # keep the latest eight 15-minute snapshots (instead of four)
     monthly = 1;  # keep only one monthly snapshot (instead of twelve)
   };
+
+  services.tlp.enable = lib.mkDefault true;
+  services.fstrim.enable = lib.mkDefault true;
   networking.hostId = "10faa34b";
 
   fileSystems."/" =

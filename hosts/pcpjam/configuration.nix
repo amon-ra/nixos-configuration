@@ -182,6 +182,7 @@ in
   powerManagement.cpuFreqGovernor = "performance";
   # virtualisation.docker.enable = true;
   programs = {
+    adb.enable = true;
     bash = {
       promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
       interactiveShellInit = ''export HISTFILE=$HOME/.config/.bash_history'';
@@ -206,9 +207,14 @@ in
   services = {
     # Enable CUPS to print documents.
     printing.enable = true;
-    avahi.enable = true;
-    avahi.publish.enable = true;
-    avahi.publish.userServices = true;
+    avahi = {
+        enable = true;
+        nssmdns = true;
+        publish = {
+          enable = true;
+          addresses = true;
+        };
+      };
 
     blueman.enable = true;
     chrony = {
@@ -248,6 +254,12 @@ in
       displayManager = {
         lightdm.enable = true;
         defaultSession = "i3";
+        session = [
+          {
+            manage = "desktop";
+            name = "xsession";
+            start = ''exec $HOME/.xsession'';
+          }];        
         autoLogin = { 
           enable = true; 
           user = "juanra"; 
