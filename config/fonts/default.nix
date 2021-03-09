@@ -1,12 +1,11 @@
 { config, pkgs, ... }:
 
-{ i18n = {
-    consoleFont = "lat9w-16";
-    # consoleKeyMap = "colemak/en-latin9";
-  };
+{ 
+  console.font = "lat9w-16";
+  # consoleKeyMap = "colemak/en-latin9";
 
   fonts = {
-    enableFontDir = true;
+    fontDir.enable = true;
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
       corefonts
