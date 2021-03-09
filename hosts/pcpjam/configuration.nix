@@ -253,7 +253,7 @@ in
       videoDrivers = [ "amdgpu" "modesetting" ];
       displayManager = {
         lightdm.enable = true;
-        defaultSession = "i3";
+        defaultSession = "xsession";
         session = [
           {
             manage = "desktop";
