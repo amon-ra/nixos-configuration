@@ -53,7 +53,12 @@ With =theme.lightModeEnabled = true;=
 
 [[img/light-mode.png]]
 
-# TODO
+** Options
+- https://nix-community.github.io/home-manager/options.html
+- https://search.nixos.org/
+- 
+
+** TODO
 - https://github.com/CaptainSpof/dotfiles
 - https://github.com/CaptainSpof/dotfiles/tree/master/hosts/dafbox
 - https://github.com/divnix/devos

@@ -57,7 +57,7 @@ in
       extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl ];
     };
   };
-  imports = [ ./hardware-configuration.nix ../../config/i3/config.nix ../../config/i3/polybar.nix ../../config/i3/rofi.nix ];
+  imports = [ ./hardware-configuration.nix ../../config/i3/config.nix ];
   i18n.defaultLocale = "es_ES.UTF-8";
   environment = {
     pathsToLink = [ "/share/zsh" ];
@@ -180,6 +180,7 @@ in
     };
   };
   powerManagement.cpuFreqGovernor = "performance";
+  # virtualisation.docker.enable = true;
   programs = {
     bash = {
       promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
@@ -203,6 +204,12 @@ in
     };
   };
   services = {
+    # Enable CUPS to print documents.
+    printing.enable = true;
+    avahi.enable = true;
+    avahi.publish.enable = true;
+    avahi.publish.userServices = true;
+
     blueman.enable = true;
     chrony = {
       enable = true;
@@ -221,29 +228,7 @@ in
       gatewayPorts = "yes";
       permitRootLogin = "no";
     };
-    picom = {
-      enable = true;
-      experimentalBackends = true;
-      refreshRate = 60;
-      backend = "glx";
-      vSync = true;
-      fade = true;
-      fadeDelta = 3;
-      settings = {
-        blur = {
-          method = "dual_kawase";
-          strength = 5;
-          background = false;
-          background-frame = false;
-          background-fixed = false;
-        };
-        blur-background-exclude = [
-          "window_type = 'dock'"
-          "window_type = 'desktop'"
-          "_GTK_FRAME_EXTENTS@:c"
-        ];
-      };
-    };
+
     pipewire = {
       enable = true;
       socketActivation = false;
@@ -309,6 +294,7 @@ in
       # };
     };
     stateVersion = "21.05";
+    autoUpgrade.enable = false;    
   };
   systemd = {
     extraConfig = "RebootWatchdogSec=5";
