@@ -59,7 +59,7 @@ in
       extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl ];
     };
   };
-  imports = [ ./hardware-configuration.nix ../config/fonts ];
+  imports = [ ./hardware-configuration.nix ../../config/fonts ];
   i18n.defaultLocale = "es_ES.UTF-8";
   environment = {
     pathsToLink = [ "/share/zsh" ];
