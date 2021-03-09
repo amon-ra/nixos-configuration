@@ -17,9 +17,6 @@ nixpkgs.lib.nixosSystem rec {
           unstable = unstable.legacyPackages.${system};
           stable = stable.legacyPackages.${system};
         };
-        # inputOverlays = _: _: {
-        #   comma = import inputs.comma { pkgs = unstable.legacyPackages."${system}"; };
-        # };
       in
       {
         config = {
@@ -31,7 +28,6 @@ nixpkgs.lib.nixosSystem rec {
           nvim-nightly.overlay
           nur.overlay
           rust.overlay
-          inputOverlays
         ] ++ userOverlays;
       };
     }
