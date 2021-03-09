@@ -17,9 +17,9 @@ nixpkgs.lib.nixosSystem rec {
           unstable = unstable.legacyPackages.${system};
           stable = stable.legacyPackages.${system};
         };
-        inputOverlays = _: _: {
-          comma = import inputs.comma { pkgs = unstable.legacyPackages."${system}"; };
-        };
+        # inputOverlays = _: _: {
+        #   comma = import inputs.comma { pkgs = unstable.legacyPackages."${system}"; };
+        # };
       in
       {
         config = {

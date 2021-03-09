@@ -33,7 +33,7 @@ rec {
       betterdiscordctl
       bpytop
       brave
-      comma
+      # comma
       discord
       element-desktop
       head.exa
@@ -79,7 +79,7 @@ rec {
   imports = [
     ./config/alacritty
     ./config/base16
-    ./config/comma
+    # ./config/comma
     ./config/dunst
     # ./config/firefox
     ./config/mpd
