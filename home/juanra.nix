@@ -81,7 +81,7 @@ rec {
     ./config/base16
     ./config/comma
     ./config/dunst
-    ./config/firefox
+    # ./config/firefox
     ./config/mpd
     ./config/mpv
     ./config/nvim
