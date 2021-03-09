@@ -25,7 +25,7 @@ let
     imagemagick
     jq
     libarchive
-    libreoffice
+    # libreoffice
     mediainfo
     poppler_utils
     python38Packages.pdf2image
