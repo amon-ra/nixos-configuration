@@ -134,55 +134,55 @@ rec {
       enable = true;
       settings = (import ./config/ncmpcpp.nix);
     };
-    neovim = {
-      enable = true;
-      package = pkgs.neovim-nightly;
-      viAlias = true;
-      vimAlias = true;
-      vimdiffAlias = true;
-      withNodeJs = true;
-      extraConfig = (import ./config/neovim.nix);
-      extraPackages = with pkgs; [ rnix-lsp shellcheck ];
-    };
+    # neovim = {
+    #   enable = true;
+    #   package = pkgs.neovim-nightly;
+    #   viAlias = true;
+    #   vimAlias = true;
+    #   vimdiffAlias = true;
+    #   withNodeJs = true;
+    #   extraConfig = (import ./config/neovim.nix);
+    #   extraPackages = with pkgs; [ rnix-lsp shellcheck ];
+    # };
     starship = {
       enable = true;
       settings = (import ./config/starship.nix);
     };
-    qutebrowser = {
-      enable = true;
-      extraConfig = (import ./config/qutebrowser.nix);
-    };
-    zathura = {
-      enable = true;
-      package = pkgs.zathura;
-      extraConfig = "map <C-i> recolor";
-      options = (import ./config/zathura.nix { inherit theme; });
-    };
-    zsh = rec {
-      enable = true;
-      autocd = true;
-      enableAutosuggestions = true;
-      dotDir = ".config/zsh";
-      history = {
-        expireDuplicatesFirst = true;
-        extended = true;
-        path = "${programs.zsh.dotDir}/zsh_history";
-        save = 50000;
-      };
-      initExtra = (import ./config/zshrc.nix { inherit dotDir home; });
-      plugins = [
-        rec {
-          name = "fast-syntax-highlighting";
-          src = pkgs.fetchFromGitHub {
-            owner = "zdharma";
-            repo = name;
-            rev = "a62d721affc771de2c78201d868d80668a84c1e1";
-            sha256 = "sha256-4xJXH9Wn18/+Vfib/ZrhCRp/yB1PppsbZCx1/WafmU8=";
-          };
-        }
-      ];
-      shellAliases = (import ./config/sh-aliases.nix);
-    };
+    # qutebrowser = {
+    #   enable = true;
+    #   extraConfig = (import ./config/qutebrowser.nix);
+    # };
+    # zathura = {
+    #   enable = true;
+    #   package = pkgs.zathura;
+    #   extraConfig = "map <C-i> recolor";
+    #   options = (import ./config/zathura.nix { inherit theme; });
+    # };
+    # zsh = rec {
+    #   enable = true;
+    #   autocd = true;
+    #   enableAutosuggestions = true;
+    #   dotDir = ".config/zsh";
+    #   history = {
+    #     expireDuplicatesFirst = true;
+    #     extended = true;
+    #     path = "${programs.zsh.dotDir}/zsh_history";
+    #     save = 50000;
+    #   };
+    #   initExtra = (import ./config/zshrc.nix { inherit dotDir home; });
+    #   plugins = [
+    #     rec {
+    #       name = "fast-syntax-highlighting";
+    #       src = pkgs.fetchFromGitHub {
+    #         owner = "zdharma";
+    #         repo = name;
+    #         rev = "a62d721affc771de2c78201d868d80668a84c1e1";
+    #         sha256 = "sha256-4xJXH9Wn18/+Vfib/ZrhCRp/yB1PppsbZCx1/WafmU8=";
+    #       };
+    #     }
+    #   ];
+    #   shellAliases = (import ./config/sh-aliases.nix);
+    # };
   };
   # services = {
   #   dunst = {
