@@ -41,10 +41,7 @@ in
       # };
     };
   };
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "es";
-  };
+  console.keyMap = "es";
   hardware = {
     bluetooth = {
       enable = true;

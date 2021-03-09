@@ -2,6 +2,8 @@
 
 { 
   console.font = "lat9w-16";
+#   console.font = "Lat2-Terminus16";
+
   # consoleKeyMap = "colemak/en-latin9";
 
   fonts = {
